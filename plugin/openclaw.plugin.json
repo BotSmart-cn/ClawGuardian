@@ -1,0 +1,128 @@
+{
+    "id": "clawguardian",
+    "name": "ClawGuardian",
+    "version": "0.2.1",
+    "description": "内容安全审核插件 – 入站拦截 + 工具调用阻断",
+    "author": "Botsmart",
+    "main": "dist/index.js",
+    "config": {
+        "enabled": true,
+        "historyRounds": 5,
+        "inputBudgetTokens": 28000,
+        "reserveTokens": 4000,
+        "blockMessage": "不安全请求, 已被拦截",
+        "showRiskLabels": true,
+        "convUserBanTtlMs": 10000,
+        "guard": {
+            "endpoint": "https://llmfence.botsmart.cn:18191/v1/chat/completions",
+            "apiKey": "${CLAWGUARDIAN_GUARD_API_KEY}",
+            "timeoutMs": 3000,
+            "retries": 1,
+            "failMode": "fail-closed",
+            "allowedRiskCategories": ["S18"]
+        },
+        "outputGuard": {
+            "enabled": true,
+            "windowTokens": 6000
+        },
+        "piiRedaction": {
+            "enabled": true
+        }
+    },
+    "configSchema": {
+        "type": "object",
+        "properties": {
+            "enabled": {
+                "type": "boolean"
+            },
+            "historyRounds": {
+                "type": "number",
+                "minimum": 0
+            },
+            "inputBudgetTokens": {
+                "type": "number",
+                "minimum": 0
+            },
+            "reserveTokens": {
+                "type": "number",
+                "minimum": 0
+            },
+            "blockMessage": {
+                "type": "string"
+            },
+            "showRiskLabels": {
+                "type": "boolean"
+            },
+            "convUserBanTtlMs": {
+                "type": "number",
+                "minimum": 1
+            },
+            "guard": {
+                "type": "object",
+                "properties": {
+                    "endpoint": {
+                        "type": "string"
+                    },
+                    "apiKey": {
+                        "type": "string"
+                    },
+                    "timeoutMs": {
+                        "type": "number",
+                        "minimum": 100
+                    },
+                    "retries": {
+                        "type": "number",
+                        "minimum": 0
+                    },
+                    "failMode": {
+                        "type": "string",
+                        "enum": [
+                            "fail-closed",
+                            "fail-open"
+                        ]
+                    },
+                    "allowedRiskCategories": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "outputGuard": {
+                "type": "object",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "windowTokens": {
+                        "type": "number",
+                        "minimum": 100
+                    }
+                }
+            },
+            "piiRedaction": {
+                "type": "object",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "customPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "regex": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

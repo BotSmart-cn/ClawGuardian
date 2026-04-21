@@ -1,0 +1,1 @@
+function e(e){if(!e)return 0;const t=e.length,n=Buffer.byteLength(e,"utf8"),r=Math.ceil(n/3),o=Math.ceil(t/1.8);return Math.ceil(1.15*Math.max(r,o))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.estimateTokens=e,exports.estimateTokensBatch=function(t){return t.reduce((t,n)=>t+e(n),0)};

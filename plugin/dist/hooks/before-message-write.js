@@ -1,0 +1,1 @@
+Object.defineProperty(exports,"__esModule",{value:!0}),exports.onBeforeMessageWrite=function(e,r,s){if(!s.enabled)return;const t=e.sessionKey??r.sessionKey;if(!t)return;if(t.startsWith("temp:")||t.includes("slug-generator"))return;return};

@@ -1,0 +1,1 @@
+Object.defineProperty(exports,"__esModule",{value:!0}),exports.truncateText=function(n,r){if(n.length<=r)return n;const o=r-t.length;if(o<=0)return t;const c=Math.floor(o*e),l=o-c;return n.slice(0,c)+t+n.slice(n.length-l)};const e=.6,t="...<truncated>...";

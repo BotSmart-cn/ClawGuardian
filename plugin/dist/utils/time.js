@@ -1,0 +1,1 @@
+Object.defineProperty(exports,"__esModule",{value:!0}),exports.startTimer=function(){const e=process.hrtime.bigint();return()=>Number(process.hrtime.bigint()-e)/1e6};

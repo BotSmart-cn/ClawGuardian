@@ -1,0 +1,1 @@
+Object.defineProperty(exports,"__esModule",{value:!0}),exports.createStreamGuardState=function(){return{buffer:"",emittedTokens:0,checks:0,blocked:!1}},exports.appendChunk=function(e,t){return{...e,buffer:e.buffer+t,emittedTokens:e.emittedTokens+t.length}},exports.markBlocked=function(e){return{...e,blocked:!0}};

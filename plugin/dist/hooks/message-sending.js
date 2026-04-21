@@ -1,0 +1,1 @@
+Object.defineProperty(exports,"__esModule",{value:!0}),exports.onMessageSending=async function(e,n,o){return void o.enabled};
